@@ -20,10 +20,10 @@ const _gui = {
 }
 
 const _soundUrls = [
-	"audio/simonSound1.mp3",
-	"audio/simonSound2.mp3",
-	"audio/simonSound3.mp3",
-	"audio/simonSound4.mp3"
+	"assets/sounds/green.mp3",
+	"assets/sounds/red.mp3",
+	"assets/sounds/yellow.mp3",
+	"assets/sounds/blue.mp3"
 ];
 
 _soundUrls.forEach(sndPath => {
@@ -60,6 +60,16 @@ _gui.start.addEventListener("click", () => {
 });
 
 const padListener = (e) => {
+	if(!_data.playerCanPlay)
+		return;
+
+	let soundId;
+	_gui.pads.forEach((pad, key) => {
+		if(pad === e.target)
+			soundId = key;
+	});
+
+	_data.sounds[soundId].play();
 
 }
 
@@ -70,6 +80,7 @@ _gui.pads.forEach(pad => {
 const startGame = () => {
 	blink("--", () => { 
 		newColor();
+		playSequence();
 	})
 }
 
@@ -89,6 +100,41 @@ const newColor = () => {
 }
 
 const playSequence = () => {
+	let counter = 0,
+		padOn = true;
+
+	
+	_data.playerSequence = [];
+	_data.playerCanPlay = false;
+
+	const interval = setInterval(() => {
+		if(!_data.gameOn){
+			clearInterval(interval)
+			disablePads();
+			return;
+		}
+
+		if(padOn){
+			if(counter === _data.gameSequence.length){
+				clearInterval(interval);
+				disablePads();
+				waitForPlayerClick();
+				_data.playerCanPlay = true;
+				return;
+			}
+			const sndId = _data.gameSequence[counter];
+			const pad = _gui.pads[sndId];
+
+			_data.sounds[sndId].play();
+			pad.classList.add("game__pad--active");
+			counter++;
+		}
+		else {
+			disablePads();
+		}
+		padOn = !padOn;
+
+	},750);
 
 }
 
@@ -122,6 +168,15 @@ const blink = (text, callback) => {
 }
 
 const waitForPlayerClick = () => {
+	clearTimeout(_data.timeout);
+
+	_data.timeout = setTimeout(() => {
+		if(!_data.playerCanPlay)
+		return;
+
+		disablePads();
+		playSequence();		
+	},5000);
 
 }
 
