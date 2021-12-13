@@ -32,16 +32,17 @@ _soundUrls.forEach(sndPath => {
 });
 
 _gui.switch.addEventListener("click", () => {
-	_data.gameOn =_gui.switch.classList.toggle("gui__btn-switch--on");
+	_data.gameOn = _gui.switch.classList.toggle("gui__btn-switch--on");
 
 	_gui.counter.classList.toggle("gui__counter--on");
 	_gui.counter.innerHTML = "--";
 
 	_data.strict = false;
+	_data.startGame = false;
 	_data.playerCanPlay = false;
 	_data.score = 0;
 	_data.gameSequence = [];
-	_data.playerSequence= [];
+	_data.playerSequence = [];
 
 	disablePads();
 	changePadCursor("auto");
@@ -50,8 +51,8 @@ _gui.switch.addEventListener("click", () => {
 });
 
 _gui.strict.addEventListener("click", () => {
-	if(!_data.gameOn)
-	      return;
+	if (!_data.gameOn)
+		return;
 
 	_data.strict = _gui.led.classList.toggle("gui__led--active");
 });
@@ -61,37 +62,36 @@ _gui.start.addEventListener("click", () => {
 });
 
 const padListener = (e) => {
-	if(!_data.playerCanPlay)
+	if (!_data.playerCanPlay)
 		return;
 
 	let soundId;
 	_gui.pads.forEach((pad, key) => {
-		if(pad === e.target)
+		if (pad === e.target)
 			soundId = key;
 	});
 
-	e.target.classList.add("game__pad--active")
+	e.target.classList.add("game__pad--active");
 
 	_data.sounds[soundId].play();
 	_data.playerSequence.push(soundId);
 
-	setTimeout(()  =>{
+	setTimeout(() => {
 		e.target.classList.remove("game__pad--active");
 
-		const currentMove = _data.playerSequence.length -1;
+		const currentMove = _data.playerSequence.length - 1;
 
-		if(_data.playerSequence[currentMove] !== _data.gameSequence[currentMove]){
+		if (_data.playerSequence[currentMove] !== _data.gameSequence[currentMove]) {
 			_data.playerCanPlay = false;
 			disablePads();
 			resetOrPlayAgain();
 		}
-		else if (currentMove === _data.gameSequence.length -1){
-			newColor();		
-	}
+		else if (currentMove === _data.gameSequence.length - 1) {
+			newColor();
+		}
 
-	waitForPlayerClick();	
-
-	},250);	
+		waitForPlayerClick();
+	}, 250);
 }
 
 _gui.pads.forEach(pad => {
@@ -99,58 +99,57 @@ _gui.pads.forEach(pad => {
 });
 
 const startGame = () => {
-	blink("--", () => { 
+	blink("--", () => {
 		newColor();
 		playSequence();
-	})
+	});
 }
 
 const setScore = () => {
 	const score = _data.score.toString();
 	const display = "00".substring(0, 2 - score.length) + score;
-	_gui.counter.innerHTML = display;
-
+	_gui.counter.innerText = display;
 }
 
 const newColor = () => {
-	if(_data.score === 20){
-		blink("**",startGame);
+	if (_data.score === 20) {
+		blink("**", startGame);
 		return;
 	}
+	
 	_data.gameSequence.push(Math.floor(Math.random() * 4));
 	_data.score++;
 
 	setScore();
-	playSequence(); 
-
+	playSequence();
 }
 
 const playSequence = () => {
 	let counter = 0,
 		padOn = true;
 
-	
 	_data.playerSequence = [];
 	_data.playerCanPlay = false;
 
 	changePadCursor("auto");
 
 	const interval = setInterval(() => {
-		if(!_data.gameOn){
-			clearInterval(interval)
+		if (!_data.gameOn) {
+			clearInterval(interval);
 			disablePads();
 			return;
 		}
 
-		if(padOn){
-			if(counter === _data.gameSequence.length){
+		if (padOn) {
+			if (counter === _data.gameSequence.length) {
 				clearInterval(interval);
 				disablePads();
-				waitForPlayerClick( );
+				waitForPlayerClick();
 				changePadCursor("pointer");
 				_data.playerCanPlay = true;
 				return;
 			}
+
 			const sndId = _data.gameSequence[counter];
 			const pad = _gui.pads[sndId];
 
@@ -161,58 +160,56 @@ const playSequence = () => {
 		else {
 			disablePads();
 		}
+
 		padOn = !padOn;
-
-	},750);
-
+	}, 750);
 }
 
 const blink = (text, callback) => {
 	let counter = 0,
-	on = true;
+		on = true;
 
-	_gui.counter.innerHTML = text;
+	_gui.counter.innerText = text;
 
 	const interval = setInterval(() => {
-		if(!_data.gameOn){
+		if (!_data.gameOn) {
 			clearInterval(interval);
 			_gui.counter.classList.remove("gui__counter--on");
 			return;
 		}
-		if(on){
+
+		if (on) {
 			_gui.counter.classList.remove("gui__counter--on");
-		} 
-		else{
+		}
+		else {
 			_gui.counter.classList.add("gui__counter--on");
 
-			if(++counter === 3){
+			if (++counter === 3) {
 				clearInterval(interval);
-				callback()
-			}			
+				callback();
+			}
 		}
-		on=!on;
 
-	},250);
-
+		on = !on;
+	}, 250);
 }
 
 const waitForPlayerClick = () => {
 	clearTimeout(_data.timeout);
 
 	_data.timeout = setTimeout(() => {
-		if(!_data.playerCanPlay)
-		return;
+		if (!_data.playerCanPlay)
+			return;
 
 		disablePads();
-		resetOrPlayAgain();	
-	},5000);
-
+		resetOrPlayAgain();
+	}, 5000);
 }
 
 const resetOrPlayAgain = () => {
 	_data.playerCanPlay = false;
 
-	if(_data.strict){
+	if (_data.strict) {
 		blink("!!", () => {
 			_data.score = 0;
 			_data.gameSequence = [];
@@ -220,8 +217,8 @@ const resetOrPlayAgain = () => {
 		});
 	}
 	else {
-		blink("!!" , () => {
-			setScore ();
+		blink("!!", () => {
+			setScore();
 			playSequence();
 		});
 	}
@@ -237,5 +234,4 @@ const disablePads = () => {
 	_gui.pads.forEach(pad => {
 		pad.classList.remove("game__pad--active");
 	});
-
 }
