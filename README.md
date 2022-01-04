@@ -8,7 +8,8 @@
 
 
 <h2 align="center">Previews 🖥️📱</h2>
-![Genius2](https://user-images.githubusercontent.com/61275275/148053228-202bd249-82d1-493b-89d8-79b56188e3d2.gif)
+
+![Genius2](https://user-images.githubusercontent.com/61275275/148053228-202bd249-82d1-493b-89d8-79b56188e3d2.gif)   
 
 **Acesse a opção "online":**
 
