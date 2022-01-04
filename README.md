@@ -39,5 +39,5 @@
   - carregar sons
   
  
-O Projeto do jogo em JavaScript foi baseado no tutorial elaborado por Phillipe Martins <br/>
-disponível em: https://www.youtube.com/c/inkasadev
+O Projeto do jogo em JavaScript foi baseado no tutorial elaborado por<br/> 
+Phillipe Martins disponível em: https://www.youtube.com/c/inkasadev
