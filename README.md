@@ -6,8 +6,8 @@
 
 # Sobre o projeto    
 
-|O **Jogo Genius** foi desenvolvido como projeto de aprendizagem cuja finalidade é auxiliar e complementar o conhecimento | 
-|em  desenvolvimento de aplicações voltadas  para a web com   HTML,  CSS  e  JavaScript. Esse  Jogo foi desenvolvido com  |  |Layout responsivo e feito exclusivamente com o DOM, sem canvas e o flash. |
+<p align="justify">O **Jogo Genius** foi desenvolvido como projeto de aprendizagem cuja finalidade é auxiliar e complementar o conhecimento 
+em  desenvolvimento de aplicações voltadas  para a web com   HTML,  CSS  e  JavaScript. Esse  Jogo foi desenvolvido com   |Layout responsivo e feito exclusivamente com o DOM, sem canvas e o flash. </p>
 
 O jogo Genius trata-se de um jogo de memória distribuído no Brasil  pela  empresa fabricante “Estrela”. Um brinquedo que 
 foi sucesso na década de 1980.
