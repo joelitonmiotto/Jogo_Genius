@@ -48,6 +48,5 @@ Teste sua memória com o jogo da memória “Genius”.  Preste bastante atenç�
   - setInterval()
   - carregar sons
   
- 
-O Projeto do jogo em JavaScript foi baseado no tutorial elaborado por<br/> 
-Phillipe Martins disponível em: https://www.youtube.com/c/inkasadev
+<p style='text-align: justify;'>O Projeto do jogo em JavaScript foi baseado no tutorial elaborado por
+Phillipe Martins disponível em: https://www.youtube.com/c/inkasadev </p>
