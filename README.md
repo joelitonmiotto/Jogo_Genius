@@ -18,6 +18,7 @@ Teste sua memória com o jogo da memória “Genius”.  Preste bastante atenç�
 ![Genius2](https://user-images.githubusercontent.com/61275275/148053228-202bd249-82d1-493b-89d8-79b56188e3d2.gif)   
 
 **Acesse a opção "online":**
+   https://www.jogogenius.netlify.app 
 
 
 
