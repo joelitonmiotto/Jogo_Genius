@@ -15,7 +15,7 @@ foi sucesso na década de 1980.
 
 Teste sua memória com o jogo da memória “Genius”.  Preste bastante atenção à ordem  das  cores e repita a sequência ou a partida do jogo está perdida!  Aceite o desafio.  </p>
     
-    **Acesse a opção "online":**
+ **Acesse a opção "online":**
  https://jogogenius.netlify.app/
 
 
