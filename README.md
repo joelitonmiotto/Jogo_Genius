@@ -14,15 +14,14 @@ foi sucesso na década de 1980.
 
 
 Teste sua memória com o jogo da memória “Genius”.  Preste bastante atenção à ordem  das  cores e repita a sequência ou a partida do jogo está perdida!  Aceite o desafio.  </p>
+    
+    **Acesse a opção "online":**
+ https://jogogenius.netlify.app/
 
 
 <h2 align="center">Previews 🖥️📱</h2>
 
 ![Genius2](https://user-images.githubusercontent.com/61275275/148053228-202bd249-82d1-493b-89d8-79b56188e3d2.gif)   
-
-**Acesse a opção "online":**
- https://jogogenius.netlify.app/
-
 
 
 ## Tecnologias utilizadas no projeto:
