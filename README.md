@@ -50,4 +50,4 @@ Teste sua memória com o jogo da memória “Genius”.  Preste bastante atenç�
   - carregar sons
   
 <p style='text-align: justify;'>O Projeto do jogo em JavaScript foi baseado no tutorial elaborado por
-Phillipe Martins disponível em: <a href="https://www.youtube.com/watch?v=iPI-exnefBo target="_blank">New Tab</a> </p>
+Phillipe Martins disponível em: https://www.youtube.com/watch?v=iPI-exnefBo </p>
